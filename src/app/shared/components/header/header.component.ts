@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { loadRemoteModule } from '@angular-architects/module-federation';
+import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent implements OnInit {
+  @ViewChild('cart', { read: ViewContainerRef })
+  viewContainer!: ViewContainerRef;
   products = [
     { name: 'Product 1', category: 'Category 1' },
     { name: 'Product 2', category: 'Category 2' },
@@ -18,8 +21,10 @@ export class HeaderComponent implements OnInit {
   selectedCategory: string = '';
   filteredProducts: object[] = [];
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    alert("chamou host")
     this.filteredProducts = this.products; // Inicializa com todos os produtos
+    await this.load()
   }
 
   filterProducts(): void {
@@ -28,5 +33,17 @@ export class HeaderComponent implements OnInit {
       const matchesCategory = this.selectedCategory ? product.category === this.selectedCategory : true;
       return matchesName && matchesCategory;
     });
+  }
+
+  async load(): Promise<void> {
+
+      const m = await loadRemoteModule({
+        type: 'module',
+        remoteEntry: 'http://localhost:4201/remoteEntry.js',
+        exposedModule: './Component'
+      });
+
+      const ref = this.viewContainer.createComponent(m.CheckoutComponent);
+      // const compInstance = ref.instance;
   }
 }
