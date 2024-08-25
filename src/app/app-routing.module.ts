@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { TesteComponent } from './shared/components/teste/teste.component';
 
 const APP_ROUTES: Routes = [
   {

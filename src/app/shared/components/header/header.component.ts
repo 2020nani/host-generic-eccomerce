@@ -1,5 +1,5 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, HostListener, OnInit, SimpleChanges, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -20,11 +20,17 @@ export class HeaderComponent implements OnInit {
   searchTerm: string = '';
   selectedCategory: string = '';
   filteredProducts: object[] = [];
+  isMobile: boolean = false;
 
   async ngOnInit() {
-    alert("chamou host")
-    this.filteredProducts = this.products; // Inicializa com todos os produtos
+    this.filteredProducts = this.products;
+    this.isMobile = window.innerWidth < 900;
     await this.load()
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.isMobile = window.innerWidth < 900;
   }
 
   filterProducts(): void {
@@ -46,4 +52,5 @@ export class HeaderComponent implements OnInit {
       const ref = this.viewContainer.createComponent(m.CheckoutComponent);
       // const compInstance = ref.instance;
   }
+
 }

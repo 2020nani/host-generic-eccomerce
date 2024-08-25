@@ -1,4 +1,4 @@
-<div class="header-container">
+<div *ngIf="isMobile===false;else mobile" class="header-container">
   <div class="content-data-store">
     <div class="content-logo">
       <img src="assets/images/logo1.png" alt="logo1">
@@ -48,3 +48,29 @@
     </div>
   </div>
 </div>
+
+<ng-template #mobile>
+  <div class="header-container-mobile">
+    <div class="header-content-mobile">
+      <img src="assets/images/menu.png" alt="menu">
+    <div class="content-logo">
+      <img src="assets/images/logo1.png" alt="logo1">
+      <img src="assets/images/logo.png" alt="logo" style="margin-left: 10px;">
+    </div>
+    <span #cart></span>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search Products">
+      <select>
+        <option>All categories</option>
+        <option>Category 1</option>
+        <option>Category 2</option>
+        <!-- Adicione mais opções conforme necessário -->
+      </select>
+      <button>
+        <img src="assets/images/search.png" alt="Search">
+      </button>
+    </div>
+  </div>
+
+</ng-template>

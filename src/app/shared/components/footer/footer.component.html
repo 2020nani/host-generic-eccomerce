@@ -1,4 +1,4 @@
-<div class="footer-container">
+<div *ngIf="isMobile === false;else mobile" class="footer-container">
   <div class="content-register-email">
     <h1>Luminae Store</h1>
     <span>Registre seu email para nao perder nossas ofertas e novidades</span>
@@ -50,3 +50,44 @@
     </div>
   </div>
 </div>
+ <ng-template #mobile>
+  <div class="footer-container">
+    <div class="container-data-store-mobile">
+      <div class="content-data-store-mobile">
+        <div class="texts-content-mobile">
+          <strong>Compania</strong>
+          <span>Quem somos</span>
+          <span>Nossa loja</span>
+          <span>Contatos</span>
+        </div>
+        <div class="texts-content-mobile">
+          <strong>Carreira</strong>
+          <span>Trabalhe Conosco</span>
+          <span>Nossa loja</span>
+          <span>Contatos</span>
+        </div>
+      </div>
+      <div class="content-data-store-mobile">
+        <div class="texts-content-mobile">
+          <strong>Comprar</strong>
+          <span>Pagamentos</span>
+          <span>Opções de entrega</span>
+          <span>Compra protegida</span>
+        </div>
+        <div class="texts-content-mobile">
+          <strong>Ajuda</strong>
+          <span>Contatos</span>
+          <span>FAQ</span>
+          <span>Politicas Privacidade</span>
+        </div>
+      </div>
+    </div>
+    <div class="container-data-payments">
+      <div class="payments-info">
+        <img src="assets/images/visa.png" alt="Visa">
+        <img src="assets/images/mastercard.png" alt="Mastercard">
+      </div>
+    </div>
+  </div>
+ </ng-template>
+
