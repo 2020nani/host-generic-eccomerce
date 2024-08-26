@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { loadRemoteModule } from '@angular-architects/module-federation';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'host-eccomerce';
+
 }

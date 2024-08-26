@@ -7,3 +7,5 @@ export function loadMicrofrontendModule() {
     exposedModule: './CheckoutComponent'
   }).then(m => m.SharedModule);
 }
+
+

@@ -93,7 +93,7 @@
 }
 
 .content-social-media{
-  width: 9%;
+  width: 11%;
   height: 24px;
   display: flex;
   justify-content: space-between;
@@ -119,12 +119,18 @@
 }
 @media screen and (max-width: 900px) {
   .search-bar{
-    width: 90%;
-    margin-left: 5%;
+    width: 150px;
+    background-color: #fff
   }
   .content-logo {
     width: 133px;
-    height: 100%;
+  }
+  .content-signin{
+    margin: 0;
+  }
+  .content-social-media{
+    width: 100px;
+    padding: 0;
   }
 }
 

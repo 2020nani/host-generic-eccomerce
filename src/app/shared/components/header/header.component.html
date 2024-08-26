@@ -1,10 +1,10 @@
-<div *ngIf="isMobile===false;else mobile" class="header-container">
+<div class="header-container">
   <div class="content-data-store">
     <div class="content-logo">
       <img src="assets/images/logo1.png" alt="logo1">
       <img src="assets/images/logo.png" alt="logo" style="margin-left: 10px;">
     </div>
-    <div class="search-bar">
+    <div *ngIf="isMobile===false;" class="search-bar">
       <input type="text" placeholder="Search Products">
       <select>
         <option>All categories</option>
@@ -15,12 +15,6 @@
       <button>
         <img src="assets/images/search.png" alt="Search">
       </button>
-    </div>
-    <div class="content-data-enterprise">
-      <span>Quem somos</span>
-      <span>Nosso blog</span>
-      <span>Contatos</span>
-      <span>Suporte</span>
     </div>
     <div class="content-social-media">
       <img src="assets/images/instagram.png" alt="instagram">
@@ -31,46 +25,29 @@
   <div class="content-signin">
     <div style="margin-left: 20px;">
       <span>
-        <img src="assets/images/categories-search.png" alt="category">Categorias
+        <img src="assets/images/categories-search.png" alt="category">
       </span>
     </div>
-    <div>
-      Promoções Inverno confiram
+    <div *ngIf="isMobile===true;" class="search-bar">
+      <input type="text" placeholder="Search Products">
+      <button>
+        <img src="assets/images/search.png" alt="Search">
+      </button>
     </div>
     <div style="margin-right: 20px;display: flex;">
-      <span>
+      <span *ngIf="isMobile===false;">
         <img src="assets/images/signin.png" alt="">Signin
       </span>
-      <span>
+      <span *ngIf="isMobile===false;">
         <img src="assets/images/favorites.png" alt="">Favoritos
+      </span>
+      <span *ngIf="isMobile===true;">
+        <img src="assets/images/signin.png" alt="Signin">
+      </span>
+      <span *ngIf="isMobile===true;">
+        <img src="assets/images/favorites.png" alt="Favoritos">
       </span>
       <span #cart></span>
     </div>
   </div>
 </div>
-
-<ng-template #mobile>
-  <div class="header-container-mobile">
-    <div class="header-content-mobile">
-      <img src="assets/images/menu.png" alt="menu">
-    <div class="content-logo">
-      <img src="assets/images/logo1.png" alt="logo1">
-      <img src="assets/images/logo.png" alt="logo" style="margin-left: 10px;">
-    </div>
-    <span #cart></span>
-    </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search Products">
-      <select>
-        <option>All categories</option>
-        <option>Category 1</option>
-        <option>Category 2</option>
-        <!-- Adicione mais opções conforme necessário -->
-      </select>
-      <button>
-        <img src="assets/images/search.png" alt="Search">
-      </button>
-    </div>
-  </div>
-
-</ng-template>

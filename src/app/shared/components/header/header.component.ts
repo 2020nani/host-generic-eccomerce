@@ -6,9 +6,10 @@ import { Component, HostListener, OnInit, SimpleChanges, ViewChild, ViewContaine
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent{
   @ViewChild('cart', { read: ViewContainerRef })
   viewContainer!: ViewContainerRef;
+
   products = [
     { name: 'Product 1', category: 'Category 1' },
     { name: 'Product 2', category: 'Category 2' },
@@ -22,14 +23,18 @@ export class HeaderComponent implements OnInit {
   filteredProducts: object[] = [];
   isMobile: boolean = false;
 
-  async ngOnInit() {
+  constructor(){
     this.filteredProducts = this.products;
     this.isMobile = window.innerWidth < 900;
-    await this.load()
+    this.load()
   }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
+    console.log(this.viewContainer)
+    if(this.viewContainer === undefined) {
+      this.load();
+    }
     this.isMobile = window.innerWidth < 900;
   }
 
@@ -49,8 +54,8 @@ export class HeaderComponent implements OnInit {
         exposedModule: './Component'
       });
 
-      const ref = this.viewContainer.createComponent(m.CheckoutComponent);
-      // const compInstance = ref.instance;
+      const ref: any= this.viewContainer.createComponent(m.CheckoutComponent);
+      const compInstance = ref.instance;
   }
 
 }
