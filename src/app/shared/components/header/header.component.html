@@ -24,7 +24,7 @@
   </div>
   <div class="content-signin">
     <div style="margin-left: 20px;">
-      <span>
+      <span style="cursor: pointer" (click)="showModal()">
         <img src="assets/images/categories-search.png" alt="category">
       </span>
     </div>
@@ -35,19 +35,30 @@
       </button>
     </div>
     <div style="margin-right: 20px;display: flex;">
-      <span *ngIf="isMobile===false;">
+      <span *ngIf="isMobile===false;"
+      [routerLink]="['/auth']" routerLinkActive="active-link" style="cursor: pointer;"
+      >
         <img src="assets/images/signin.png" alt="">Signin
       </span>
-      <span *ngIf="isMobile===false;">
+      <span *ngIf="isMobile===false;"
+      [routerLink]="['/favorites']" routerLinkActive="active-link" style="cursor: pointer;"
+      >
         <img src="assets/images/favorites.png" alt="">Favoritos
       </span>
-      <span *ngIf="isMobile===true;">
+      <span *ngIf="isMobile===true;"
+      [routerLink]="['/auth']" routerLinkActive="active-link" style="cursor: pointer;"
+      >
         <img src="assets/images/signin.png" alt="Signin">
       </span>
-      <span *ngIf="isMobile===true;">
+      <span *ngIf="isMobile===true;"
+      [routerLink]="['/favorites']" routerLinkActive="active-link" style="cursor: pointer;"
+      >
         <img src="assets/images/favorites.png" alt="Favoritos">
       </span>
       <span #cart></span>
     </div>
+  </div>
+  <div>
+    <app-modal-menu></app-modal-menu>
   </div>
 </div>

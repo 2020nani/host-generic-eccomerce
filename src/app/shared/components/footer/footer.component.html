@@ -1,5 +1,5 @@
-<div *ngIf="isMobile === false;else mobile" class="footer-container">
-  <div class="content-register-email">
+<div *ngIf="isMobile === false;else mobile" class="footer-container" ngClass=" 'footer-container-store', isStored">
+  <div *ngIf="isStored" class="content-register-email">
     <h1>Luminae Store</h1>
     <span>Registre seu email para nao perder nossas ofertas e novidades</span>
     <div class="email-input">
@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="container-data-store">
-    <div class="content-data-store">
+    <div [ngClass]="{'content-data-store': isStored,'content-data-store-generic': !isStored}">
       <div class="texts-content">
         <strong>Compania</strong>
         <span>Quem somos</span>

@@ -1,5 +1,6 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Component, HostListener, OnInit, SimpleChanges, ViewChild, ViewContainerRef } from '@angular/core';
+import { ModalMenuComponent } from '../../modal/modal-menu/modal-menu.component';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,8 @@ import { Component, HostListener, OnInit, SimpleChanges, ViewChild, ViewContaine
 export class HeaderComponent{
   @ViewChild('cart', { read: ViewContainerRef })
   viewContainer!: ViewContainerRef;
-
+  isShowMenu: boolean = false;
+  @ViewChild(ModalMenuComponent) menuComponente!: ModalMenuComponent;
   products = [
     { name: 'Product 1', category: 'Category 1' },
     { name: 'Product 2', category: 'Category 2' },
@@ -31,7 +33,6 @@ export class HeaderComponent{
 
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
-    console.log(this.viewContainer)
     if(this.viewContainer === undefined) {
       this.load();
     }
@@ -56,6 +57,11 @@ export class HeaderComponent{
 
       const ref: any= this.viewContainer.createComponent(m.CheckoutComponent);
       const compInstance = ref.instance;
+  }
+
+  showModal(){
+    this.isShowMenu === true ? this.menuComponente.showMenu() : this.menuComponente.hideMenu();
+    this.isShowMenu = !this.isShowMenu;
   }
 
 }

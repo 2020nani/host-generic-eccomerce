@@ -1,0 +1,69 @@
+<div class="form-container">
+  <!-- Sign in Form -->
+  <form [formGroup]="signinForm" (ngSubmit)="onSignIn()">
+    <h2>Sign in</h2>
+
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" type="email" placeholder="Email address">
+    <div *ngIf="signinForm.get('email')!.invalid && signinForm.get('email')!.touched">
+      Email is required and must be valid.
+    </div>
+
+    <label for="password">Password</label>
+    <input id="password" formControlName="password" type="password" placeholder="Password">
+    <div *ngIf="signinForm.get('password')!.invalid && signinForm.get('password')!.touched">
+      Password is required and must be at least 6 characters long.
+    </div>
+
+    <label>
+      <input type="checkbox" formControlName="remember"> Remember for 30 days
+    </label>
+
+    <button type="submit" [disabled]="signinForm.invalid">Sign In</button>
+
+    <p><a href="#">Forgot password?</a></p>
+
+    <div>OR</div>
+
+    <button type="button">Sign in by Google</button>
+
+    <p class="error-message">Sign up to save $9 for free shipping with Ausff company...</p>
+  </form>
+
+  <!-- Sign up Form -->
+  <form [formGroup]="signupForm" (ngSubmit)="onSignUp()">
+    <h2>Sign up</h2>
+
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" type="text" placeholder="Full name">
+    <div *ngIf="signupForm.get('name')!.invalid && signupForm.get('name')!.touched">
+      Name is required.
+    </div>
+
+    <label for="email">Email</label>
+    <input id="email" formControlName="email" type="email" placeholder="Email address">
+    <div *ngIf="signupForm.get('email')!.invalid && signupForm.get('email')!.touched">
+      Email is required and must be valid.
+    </div>
+
+    <label for="password">Password</label>
+    <input id="password" formControlName="password" type="password" placeholder="Password">
+    <div *ngIf="signupForm.get('password')!.invalid && signupForm.get('password')!.touched">
+      Password is required and must be at least 6 characters long.
+    </div>
+
+    <label>
+      <input type="checkbox" formControlName="terms">
+      Terms and conditions agreement should start...
+    </label>
+    <div *ngIf="signupForm.get('terms')!.invalid && signupForm.get('terms')!.touched">
+      You must agree to the terms and conditions.
+    </div>
+
+    <button type="submit" [disabled]="signupForm.invalid">Sign Up</button>
+
+    <div>OR</div>
+
+    <button type="button">Sign up by Google</button>
+  </form>
+</div>

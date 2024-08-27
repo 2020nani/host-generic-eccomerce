@@ -1,0 +1,56 @@
+.menu-container {
+  position: relative;
+}
+
+.menu-title {
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.menu-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 2%;
+  width: 1067px; /* Tamanho do modal */
+  height: 400px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10000;
+}
+
+.menu-dropdown.show {
+  display: flex; /* Para o layout flexível das seções */
+}
+
+.menu-section {
+  flex: 1; /* Para distribuir igualmente as seções */
+  margin-right: 20px;
+}
+
+.menu-section h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.menu-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-section ul li {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.menu-image {
+  flex: 1;
+}
+
+.menu-image img {
+  max-width: 100%;
+  height: auto;
+}
