@@ -1,5 +1,6 @@
 <div>
-  <app-header></app-header>
+  <app-header (showMenuEvent)="showMenu($event)"></app-header>
+  <div #menu></div>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>

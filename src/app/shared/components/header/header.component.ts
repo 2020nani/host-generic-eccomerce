@@ -1,6 +1,5 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { Component, HostListener, OnInit, SimpleChanges, ViewChild, ViewContainerRef } from '@angular/core';
-import { ModalMenuComponent } from '../../modal/modal-menu/modal-menu.component';
+import { Component, EventEmitter, HostListener, OnInit, Output, SimpleChanges, ViewChild, ViewContainerRef } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +10,7 @@ export class HeaderComponent{
   @ViewChild('cart', { read: ViewContainerRef })
   viewContainer!: ViewContainerRef;
   isShowMenu: boolean = false;
-  @ViewChild(ModalMenuComponent) menuComponente!: ModalMenuComponent;
+  @Output() showMenuEvent = new EventEmitter<boolean>();
   products = [
     { name: 'Product 1', category: 'Category 1' },
     { name: 'Product 2', category: 'Category 2' },
@@ -23,7 +22,7 @@ export class HeaderComponent{
   searchTerm: string = '';
   selectedCategory: string = '';
   filteredProducts: object[] = [];
-  isMobile: boolean = false;
+  isMobile: boolean = true;
 
   constructor(){
     this.filteredProducts = this.products;
@@ -60,8 +59,9 @@ export class HeaderComponent{
   }
 
   showModal(){
-    this.isShowMenu === true ? this.menuComponente.showMenu() : this.menuComponente.hideMenu();
+    this.showMenuEvent.emit(this.isShowMenu);
     this.isShowMenu = !this.isShowMenu;
+
   }
 
 }
