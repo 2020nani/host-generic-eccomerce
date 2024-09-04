@@ -28,6 +28,7 @@
   }
 }
 .content-logo{
+  cursor: pointer;
   width: 13%;
   height: 40px;
   display: flex;

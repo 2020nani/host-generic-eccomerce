@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -8,10 +8,11 @@ import { Component } from '@angular/core';
 export class FooterComponent {
   public isMobile: boolean = false;
   public isStored: boolean = false;
+  public href: string = '';
   constructor(){
-    console.log(window.location.href)
-    console.log(window.location.href.includes('/store'))
+    this.href = window.location.href;
     this.isMobile = window.innerWidth < 900;
-    this.isStored = window.location.href.includes('/store')
+    this.isStored = this.href.substring(this.href.length - 5, this.href.length).includes('store');
   }
+
 }
