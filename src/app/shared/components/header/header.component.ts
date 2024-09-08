@@ -23,6 +23,7 @@ export class HeaderComponent{
   selectedCategory: string = '';
   filteredProducts: object[] = [];
   isMobile: boolean = true;
+  isLoggedIn: boolean = false;
 
   constructor(){
     this.filteredProducts = this.products;
@@ -64,4 +65,7 @@ export class HeaderComponent{
 
   }
 
+  isLogged(){
+    return !!localStorage.getItem('token');
+  }
 }

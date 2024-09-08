@@ -9,9 +9,9 @@
       Email is required and must be valid.
     </div>
 
-    <label for="password">Password</label>
-    <input id="password" formControlName="password" type="password" placeholder="Password">
-    <div *ngIf="signinForm.get('password')!.invalid && signinForm.get('password')!.touched">
+    <label for="senha">Password</label>
+    <input id="senha" formControlName="senha" type="password" placeholder="Password">
+    <div *ngIf="signinForm.get('senha')!.invalid && signinForm.get('senha')!.touched">
       Password is required and must be at least 6 characters long.
     </div>
 
@@ -34,9 +34,9 @@
   <form [formGroup]="signupForm" (ngSubmit)="onSignUp()">
     <h2>Sign up</h2>
 
-    <label for="name">Name</label>
-    <input id="name" formControlName="name" type="text" placeholder="Full name">
-    <div *ngIf="signupForm.get('name')!.invalid && signupForm.get('name')!.touched">
+    <label for="nome">Name</label>
+    <input id="nome" formControlName="nome" type="text" placeholder="Full name">
+    <div *ngIf="signupForm.get('nome')!.invalid && signupForm.get('nome')!.touched">
       Name is required.
     </div>
 
@@ -46,9 +46,9 @@
       Email is required and must be valid.
     </div>
 
-    <label for="password">Password</label>
-    <input id="password" formControlName="password" type="password" placeholder="Password">
-    <div *ngIf="signupForm.get('password')!.invalid && signupForm.get('password')!.touched">
+    <label for="senha">Password</label>
+    <input id="senha" formControlName="senha" type="password" placeholder="Password">
+    <div *ngIf="signupForm.get('senha')!.invalid && signupForm.get('senha')!.touched">
       Password is required and must be at least 6 characters long.
     </div>
 
